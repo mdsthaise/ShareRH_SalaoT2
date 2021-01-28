@@ -27,23 +27,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tcavalcante\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\thaise.silva\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2\\SalaoT2.csproj",
+      "projectUniqueName": "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2\\SalaoT2.csproj",
       "projectName": "SalaoT2",
-      "projectPath": "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2\\SalaoT2.csproj",
-      "packagesPath": "C:\\Users\\tcavalcante\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2\\obj\\",
+      "projectPath": "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2\\SalaoT2.csproj",
+      "packagesPath": "C:\\Users\\thaise.silva\\.nuget\\packages\\",
+      "outputPath": "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\tcavalcante\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\thaise.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -51,15 +47,14 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/acessocardvsts/_packaging/Acesso%40Local/nuget/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj": {
-              "projectPath": "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj"
+            "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj": {
+              "projectPath": "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj"
             }
           }
         }

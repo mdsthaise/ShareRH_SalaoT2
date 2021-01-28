@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YIjJ1XausNJlivcjU9wu7tL6DBwt7byzIIMEHuFvONVok4Hz7s32z7j7bec9LvGdqt0FboEGLE4QVyUl9vuA0Q==",
+  "dgSpecHash": "EclSw/zk/JfdRe8YT2QNI/hbPalR5GkotOITG4E1T3ask2nX01dntC1uA86u7iRWSfFMYIGlionZv2gEM0yUpg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\tcavalcante\\Documents\\PerformaIT\\SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj",
+  "projectFilePath": "C:\\Projetos\\SalaoT2\\ShareRH_SalaoT2\\SalaoT2.Dominio\\SalaoT2.Dominio.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

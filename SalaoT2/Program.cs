@@ -1,5 +1,7 @@
 ﻿using SalaoT2.Dominio;
 using System.Linq;
+using System;
+using System.IO;
 
 namespace SalaoT2
 {
@@ -7,13 +9,34 @@ namespace SalaoT2
     {
         static void Main(string[] args)
         {
-            var meusClientes = IncluirMeusClientes();
+            try
+            {
+                var meusClientes = IncluirMeusClientes();
+                var meusServicos = IncluirMeusServicos();
+                var meusFuncionarios = IncluirFuncionarios(meusServicos);
 
-            meusClientes.AlterarUmCliente(1, "Diego", "199999999");
-            meusClientes.ExcluirUmCliente(2);
+                meusFuncionarios.ExcluirServicoDeUmFuncionario(10, 1);
+                Console.WriteLine("Aqui tá certo!");
 
-            var meusServ = IncluirMeusServicos();
-            
+                //meusClientes.AlterarUmCliente(1, "Diego", "199999999");
+                //meusClientes.ExcluirUmCliente(2);
+            }
+            catch (IOException)
+            {
+                Console.WriteLine("Ocorreu um erro. Tente novamente mais tarde. ");
+            }
+            catch (ArgumentNullException nrEx)
+            {
+                Console.WriteLine("Aqui caiu a Null Reference!");
+                throw;
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Deu ruim!!!");
+                //throw;
+            }
+            Console.WriteLine("Continuando...");
+            Console.ReadLine();
         }
 
         static MinhaBaseClientes IncluirMeusClientes()
@@ -44,6 +67,9 @@ namespace SalaoT2
             Servico s1 = new Servico();
             s1.Incluir(1, "Corte de Cabelo", 60, 130);
 
+            Servico s5 = new Servico();
+            s5.Incluir(1, "Corte de Cabelo", 60, 130);
+
             Servico s2 = new Servico();
             s2.Incluir(2, "Manicure", 60, 20);
 
@@ -58,35 +84,42 @@ namespace SalaoT2
             bs.Incluir(s2);
             bs.Incluir(s3);
             bs.Incluir(s4);
+            bs.Incluir(s5);
 
             return bs;
         }
 
-        static MinhaBaseFuncionarios IncluirFuncionarios(MinhaBaseServicos servicos)
+        static MinhaBaseFuncionarios IncluirFuncionarios(MinhaBaseServicos baseDeServico)
         {
             Funcionario f1 = new Funcionario();
             Endereco e1 = new Endereco();
             e1.Incluir(1, "Rua dos bobos", "12345-010", "Vila dos Devs", "São Paulo", "SP", "0", string.Empty);
 
-            f1.Incluir(1, "Maria", "999999999", e1, Funcionario.CargoFunc.Cabelereira);
+            f1.Incluir("Maria", "999999999", e1, Funcionario.CargoFunc.Cabelereira);
 
             Funcionario f2 = new Funcionario();
-            f2.Incluir(2, "Rosana", "999999998", e1, Funcionario.CargoFunc.Manicure);
+            f2.Incluir("Rosana", "999999998", e1, Funcionario.CargoFunc.Manicure);
 
             Funcionario f3 = new Funcionario();
-            f3.Incluir(3, "Joana", "999999997", e1, Funcionario.CargoFunc.Esteticista);
+            f3.Incluir("Joana", "999999997", e1, Funcionario.CargoFunc.Esteticista);
 
             MinhaBaseFuncionarios bf = new MinhaBaseFuncionarios();
             bf.Incluir(f1);
             bf.Incluir(f2);
             bf.Incluir(f3);
 
-            bf.IncluirServicoDeUmFuncionario(1, servicos.Servicos.FirstOrDefault(x => x.Id == 1));
-            bf.IncluirServicoDeUmFuncionario(2, servicos.Servicos.FirstOrDefault(x => x.Id == 2));
-            bf.IncluirServicoDeUmFuncionario(2, servicos.Servicos.FirstOrDefault(x => x.Id == 3));
-            bf.IncluirServicoDeUmFuncionario(3, servicos.Servicos.FirstOrDefault(x => x.Id == 4));
+
+            bf.IncluirServicoDeUmFuncionario(1, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 1));
+            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 2));
+            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 3));
+            bf.IncluirServicoDeUmFuncionario(3, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 4));
 
             return bf;
+        }
+
+        static void ChamarOExcluir()
+        { 
+            
         }
     }
 }

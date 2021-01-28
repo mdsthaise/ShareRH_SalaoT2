@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SalaoT2.Dominio
 {
@@ -24,26 +25,16 @@ namespace SalaoT2.Dominio
 
         public void AlterarUmCliente(int id, string nomeNovo, string telefoneNovo)
         {
-            foreach(var cli in Clientes)
+            Cliente cliente = Clientes.FirstOrDefault(cli => cli.Id == id);
+            if (cliente != null)
             {
-                if(cli.Id == id)
-                {
-                    cli.Alterar(nomeNovo, telefoneNovo);
-                    break;
-                }
+                cliente.Alterar(nomeNovo, telefoneNovo);
             }
         }
 
         public void ExcluirUmCliente(int id)
         {
-            for (int i = 0; i < Clientes.Count; i++)
-            {
-                if (Clientes[i].Id == id)
-                {
-                    Clientes.RemoveAt(i);
-                    break;
-                }                    
-            }
+            Clientes.RemoveAll(cli => cli.Id == id);
         }
     }
 }

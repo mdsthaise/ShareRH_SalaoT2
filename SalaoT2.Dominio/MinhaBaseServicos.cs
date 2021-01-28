@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace SalaoT2.Dominio
 {
@@ -18,26 +19,16 @@ namespace SalaoT2.Dominio
 
         public void AlterarUmServico(int id, string nomeNovo, int minutosParaExecucaoNovo, decimal precoNovo)
         {
-            foreach(var serv in Servicos)
+            Servico servico = Servicos.FirstOrDefault();
+            if (servico != null)
             {
-                if(serv.Id == id)
-                {
-                    serv.Alterar(nomeNovo, minutosParaExecucaoNovo, precoNovo);
-                    break;
-                }
+                servico.Alterar(nomeNovo, minutosParaExecucaoNovo, precoNovo);
             }
         }
 
         public void ExcluirUmServico(int id)
         {
-            for (int i = 0; i < Servicos.Count; i++)
-            {
-                if (Servicos[i].Id == id)
-                {
-                    Servicos.RemoveAt(i);
-                    break;
-                }                    
-            }
+            Servicos.RemoveAll(serv => serv.Id == id);
         }
     }
 }

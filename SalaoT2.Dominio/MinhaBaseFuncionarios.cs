@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using static SalaoT2.Dominio.Funcionario;
 
 namespace SalaoT2.Dominio
@@ -14,61 +15,42 @@ namespace SalaoT2.Dominio
 
         public void Incluir(Funcionario func)
         {
-            Funcionarios.Add(func);            
+            int matricula = 0;
+            if (Funcionarios.Any())
+                matricula = Funcionarios.Last().Matricula + 1;
+            else
+                matricula++;
+            func.Matricula = matricula;
+            Funcionarios.Add(func);
         }
 
         public void AlterarUmFuncionario(int matricula, string nomeNovo, string telefoneNovo, Endereco enderecoNovo, CargoFunc cargoNovo)
         {
-            foreach(var func in Funcionarios)
-            {
-                if(func.Matricula == matricula)
-                {
-                    func.Alterar(nomeNovo, telefoneNovo, enderecoNovo, cargoNovo);
-                    break;
-                }
-            }
+            Funcionarios.Find(func => func.Matricula == matricula)
+                .Alterar(nomeNovo, telefoneNovo, enderecoNovo, cargoNovo);
         }
 
         public void IncluirServicoDeUmFuncionario(int matricula, Servico servico)
         {
-            foreach (var func in Funcionarios)
-            {
-                if (func.Matricula == matricula)
-                {
-                    func.IncluirServico(servico);
-                    break;
-                }
-            }
+            Funcionarios.Find(func => func.Matricula == matricula)
+                .IncluirServico(servico);
         }
 
         public void ExcluirUmFuncionario(int matricula)
         {
-            for (int i = 0; i < Funcionarios.Count; i++)
-            {
-                if (Funcionarios[i].Matricula == matricula)
-                {
-                    Funcionarios.RemoveAt(i);
-                    break;
-                }                    
-            }
+            Funcionarios.RemoveAll(func => func.Matricula.Equals(matricula));
         }
 
         public void ExcluirServicoDeUmFuncionario(int matricula, int idServ)
         {
-            for (int i = 0; i < Funcionarios.Count; i++)
-            {
-                if (Funcionarios[i].Matricula == matricula)
-                {
-                    for (int t = 0; t < Funcionarios[i].Servicos?.Count; t++)
-                    {
-                        if(Funcionarios[i].Servicos[t].Id == idServ)
-                        {
-                            Funcionarios[i].Servicos.RemoveAt(t);
-                            break;
-                        }    
-                    }                    
-                }
-            }
+            //Funcionario func = Funcionarios.Find(func => func.Matricula == matricula);
+            //if (func != null)
+            //{
+            //    func.Servicos.RemoveAll(serv => serv.Id == idServ);
+            //}
+
+            Funcionarios.Find(func => func.Matricula == matricula)
+                .Servicos.RemoveAll(serv => serv.Id == idServ);
         }
     }
 }

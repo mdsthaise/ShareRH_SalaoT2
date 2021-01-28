@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace SalaoT2.Dominio
@@ -23,11 +24,11 @@ namespace SalaoT2.Dominio
             Manicure,
             Esteticista
         }
-        public List<Servico> Servicos { get; set; }        
+        public List<Servico> Servicos { get; set; }
 
-        public void Incluir(int matricula, string nome, string telefone, Endereco endereco, CargoFunc cargo)
+        public void Incluir(string nome, string telefone, Endereco endereco, CargoFunc cargo)
         {
-            Matricula = matricula;
+            //Matricula = matricula;
             Nome = nome;
             Telefone = telefone;
             Endereco = endereco;
@@ -35,7 +36,7 @@ namespace SalaoT2.Dominio
         }
 
         public void Alterar(string nome, string telefone, Endereco endereco, CargoFunc cargo)
-        {            
+        {
             Nome = nome;
             Telefone = telefone;
             Endereco = endereco;
@@ -49,13 +50,12 @@ namespace SalaoT2.Dominio
 
         public void ExcluirServico(int id)
         {
-            for (int i = 0; i < Servicos.Count; i++)
+            //Servicos.RemoveAll(s => s.Id == id);
+
+            List<Servico> remover = Servicos.FindAll(f => f.Id == id);
+            foreach (var remove in remover)
             {
-                if (Servicos[i].Id == id)
-                {
-                    Servicos.RemoveAt(i);
-                    break;
-                }
+                Servicos.Remove(remove);
             }
         }
     }

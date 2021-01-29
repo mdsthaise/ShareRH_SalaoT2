@@ -16,7 +16,6 @@ namespace SalaoT2
                 var meusFuncionarios = IncluirFuncionarios(meusServicos);
 
                 meusFuncionarios.ExcluirServicoDeUmFuncionario(10, 1);
-                Console.WriteLine("Aqui tá certo!");
 
                 //meusClientes.AlterarUmCliente(1, "Diego", "199999999");
                 //meusClientes.ExcluirUmCliente(2);

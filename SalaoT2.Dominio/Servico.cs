@@ -9,6 +9,8 @@
 
         public void Incluir(int id, string nome, int minutosParaExecucao, decimal preco)
         {
+            Agendamento a = new Agendamento();
+
             Id = id;
             Nome = nome;
             MinutosParaExecucao = minutosParaExecucao;

@@ -2,6 +2,7 @@
 using System.Linq;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 namespace SalaoT2
 {
@@ -19,6 +20,24 @@ namespace SalaoT2
 
                 //meusClientes.AlterarUmCliente(1, "Diego", "199999999");
                 //meusClientes.ExcluirUmCliente(2);
+
+                List<Agendamento> agenda = new List<Agendamento>();
+                agenda.Add(new Agendamento { Id = 2, ServicoSolicitado = 
+                            new ServicoSolicitado { Id = 2, Servico = meusServicos.Servicos.First()}, 
+                            DtAgendamento = new DateTime(2021, 1, 29, 12, 0, 0) });
+                agenda.Add(new Agendamento
+                {
+                    Id = 2,
+                    ServicoSolicitado =
+                            new ServicoSolicitado { Id = 3, Servico = meusServicos.Servicos.First() },
+                    DtAgendamento = new DateTime(2021, 1, 29, 11, 0, 0), Status = Agendamento.StatusAgenda.CanceladoPeloCliente
+                });
+
+
+                Agendamento agendamento = new Agendamento();
+                agendamento.IncluirAgendamento(1, meusClientes.Clientes.First(), 
+                    new ServicoSolicitado { Id = 1, Servico = meusServicos.Servicos.First() }, new DateTime(2021, 1, 29, 10, 0, 0), 
+                    agenda);
             }
             catch (IOException)
             {
@@ -64,19 +83,19 @@ namespace SalaoT2
         static MinhaBaseServicos IncluirMeusServicos()
         {
             Servico s1 = new Servico();
-            s1.Incluir(1, "Corte de Cabelo", 60, 130);
+            s1.Incluir(1, "Corte de Cabelo", 59, 130);
 
             Servico s5 = new Servico();
-            s5.Incluir(1, "Corte de Cabelo", 60, 130);
+            s5.Incluir(1, "Corte de Cabelo", 59, 130);
 
             Servico s2 = new Servico();
-            s2.Incluir(2, "Manicure", 60, 20);
+            s2.Incluir(2, "Manicure", 59, 20);
 
             Servico s3 = new Servico();
-            s3.Incluir(3, "Pedicure", 60, 30);
+            s3.Incluir(3, "Pedicure", 59, 30);
 
             Servico s4 = new Servico();
-            s4.Incluir(4, "Limpeza de pele", 60, 100);
+            s4.Incluir(4, "Limpeza de pele", 59, 100);
 
             MinhaBaseServicos bs = new MinhaBaseServicos();
             bs.Incluir(s1);

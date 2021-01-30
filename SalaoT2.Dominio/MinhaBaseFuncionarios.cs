@@ -43,14 +43,14 @@ namespace SalaoT2.Dominio
 
         public void ExcluirServicoDeUmFuncionario(int matricula, int idServ)
         {
-            //Funcionario func = Funcionarios.Find(func => func.Matricula == matricula);
-            //if (func != null)
-            //{
-            //    func.Servicos.RemoveAll(serv => serv.Id == idServ);
-            //}
+            Funcionario func = Funcionarios.Find(func => func.Matricula == matricula);
+            if (func != null)
+            {
+                func.Servicos.RemoveAll(serv => serv.Id == idServ);
+            }
 
-            Funcionarios.Find(func => func.Matricula == matricula)
-                .Servicos.RemoveAll(serv => serv.Id == idServ);
+            //Funcionarios.Find(func => func.Matricula == matricula)
+            //.Servicos.RemoveAll(serv => serv.Id == idServ);
         }
     }
 }

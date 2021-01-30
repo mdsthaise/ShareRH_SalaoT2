@@ -12,7 +12,7 @@ namespace SalaoT2.Dominio
             DateTime dtAgendamento, string anotacao = "")
         {
             Agendamento agenda = new Agendamento();
-            agenda.IncluirAgendamento(id, cliente, servicosSolicitados, dtAgendamento, anotacao);
+            //agenda.IncluirAgendamento(id, cliente, servicosSolicitados, dtAgendamento, anotacao);
             return true;
         }
     }

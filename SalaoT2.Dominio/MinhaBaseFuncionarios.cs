@@ -52,5 +52,33 @@ namespace SalaoT2.Dominio
             //Funcionarios.Find(func => func.Matricula == matricula)
             //.Servicos.RemoveAll(serv => serv.Id == idServ);
         }
+
+        private void DadosIniciais(MinhaBaseServicos baseDeServico)
+        {
+            Funcionario f1 = new Funcionario();
+            Endereco e1 = new Endereco();
+            e1.Incluir(1, "Rua dos bobos", "12345-010", "Vila dos Devs", "São Paulo", "SP", "0", string.Empty);
+
+            f1.Incluir("Maria", "999999999", e1, Funcionario.CargoFunc.Cabelereira);
+
+            Funcionario f2 = new Funcionario();
+            f2.Incluir("Rosana", "999999998", e1, Funcionario.CargoFunc.Manicure);
+
+            Funcionario f3 = new Funcionario();
+            f3.Incluir("Joana", "999999997", e1, Funcionario.CargoFunc.Esteticista);
+
+            MinhaBaseFuncionarios bf = new MinhaBaseFuncionarios();
+            bf.Incluir(f1);
+            bf.Incluir(f2);
+            bf.Incluir(f3);
+
+
+            bf.IncluirServicoDeUmFuncionario(1, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 1));
+            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 2));
+            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 3));
+            bf.IncluirServicoDeUmFuncionario(3, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 4));
+
+            //return bf;
+        }
     }
 }

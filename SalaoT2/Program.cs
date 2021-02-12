@@ -14,9 +14,9 @@ namespace SalaoT2
             {
                 var meusClientes = IncluirMeusClientes();
                 var meusServicos = IncluirMeusServicos();
-                var meusFuncionarios = IncluirFuncionarios(meusServicos);
+                //var meusFuncionarios = IncluirFuncionarios(meusServicos);
 
-                meusFuncionarios.ExcluirServicoDeUmFuncionario(10, 1);
+                //meusFuncionarios.ExcluirServicoDeUmFuncionario(10, 1);
 
                 //meusClientes.AlterarUmCliente(1, "Diego", "199999999");
                 //meusClientes.ExcluirUmCliente(2);
@@ -32,6 +32,10 @@ namespace SalaoT2
                             new ServicoSolicitado { Id = 3, Servico = meusServicos.Servicos.First() },
                     DtAgendamento = new DateTime(2021, 1, 29, 11, 0, 0), Status = Agendamento.StatusAgenda.CanceladoPeloCliente
                 });
+
+                var dia = DateTime.Today.Day;
+
+                var servicoDia = agenda.FindAll(a => a.DtAgendamento.Day == dia);
 
 
                 Agendamento agendamento = new Agendamento();
@@ -78,61 +82,6 @@ namespace SalaoT2
             mc.IncluirLista(c3, c4);
 
             return mc;
-        }
-
-        static MinhaBaseServicos IncluirMeusServicos()
-        {
-            Servico s1 = new Servico();
-            s1.Incluir(1, "Corte de Cabelo", 59, 130);
-
-            Servico s5 = new Servico();
-            s5.Incluir(1, "Corte de Cabelo", 59, 130);
-
-            Servico s2 = new Servico();
-            s2.Incluir(2, "Manicure", 59, 20);
-
-            Servico s3 = new Servico();
-            s3.Incluir(3, "Pedicure", 59, 30);
-
-            Servico s4 = new Servico();
-            s4.Incluir(4, "Limpeza de pele", 59, 100);
-
-            MinhaBaseServicos bs = new MinhaBaseServicos();
-            bs.Incluir(s1);
-            bs.Incluir(s2);
-            bs.Incluir(s3);
-            bs.Incluir(s4);
-            bs.Incluir(s5);
-
-            return bs;
-        }
-
-        static MinhaBaseFuncionarios IncluirFuncionarios(MinhaBaseServicos baseDeServico)
-        {
-            Funcionario f1 = new Funcionario();
-            Endereco e1 = new Endereco();
-            e1.Incluir(1, "Rua dos bobos", "12345-010", "Vila dos Devs", "São Paulo", "SP", "0", string.Empty);
-
-            f1.Incluir("Maria", "999999999", e1, Funcionario.CargoFunc.Cabelereira);
-
-            Funcionario f2 = new Funcionario();
-            f2.Incluir("Rosana", "999999998", e1, Funcionario.CargoFunc.Manicure);
-
-            Funcionario f3 = new Funcionario();
-            f3.Incluir("Joana", "999999997", e1, Funcionario.CargoFunc.Esteticista);
-
-            MinhaBaseFuncionarios bf = new MinhaBaseFuncionarios();
-            bf.Incluir(f1);
-            bf.Incluir(f2);
-            bf.Incluir(f3);
-
-
-            bf.IncluirServicoDeUmFuncionario(1, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 1));
-            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 2));
-            bf.IncluirServicoDeUmFuncionario(2, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 3));
-            bf.IncluirServicoDeUmFuncionario(3, baseDeServico.Servicos.FirstOrDefault(x => x.Id == 4));
-
-            return bf;
         }
 
         static void ChamarOExcluir()

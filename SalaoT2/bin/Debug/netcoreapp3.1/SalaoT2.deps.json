@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "SalaoT2/1.0.0": {
+        "dependencies": {
+          "SalaoT2.Dominio": "1.0.0"
+        },
+        "runtime": {
+          "SalaoT2.dll": {}
+        }
+      },
+      "SalaoT2.Dominio/1.0.0": {
+        "runtime": {
+          "SalaoT2.Dominio.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SalaoT2/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SalaoT2.Dominio/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
